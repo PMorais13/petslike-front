@@ -1,0 +1,67 @@
+<section class="places">
+  <header class="places__header">
+    <div>
+      <h1>Lugares Pet Friendly</h1>
+      <p>Descubra cafés, parques e serviços que amam animais tanto quanto você</p>
+    </div>
+    <div class="places__actions">
+      <div class="places__search">
+        <lucide-icon name="Search" size="18"></lucide-icon>
+        <input type="search" placeholder="Buscar lugares pet friendly..." [ngModel]="search()" (ngModelChange)="search.set($event)" />
+      </div>
+      <div class="places__view">
+        <button type="button" [class.places__view--active]="viewMode() === 'list'" (click)="setView('list')">
+          <lucide-icon name="List" size="18"></lucide-icon>
+          Lista
+        </button>
+        <button type="button" [class.places__view--active]="viewMode() === 'map'" (click)="setView('map')">
+          <lucide-icon name="Map" size="18"></lucide-icon>
+          Mapa
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="places__filters">
+    <button
+      type="button"
+      *ngFor="let option of categories"
+      [class.places__filter--active]="category() === option.id"
+      (click)="setCategory(option.id)"
+    >
+      {{ option.label }}
+    </button>
+  </div>
+
+  <div class="places__grid" *ngIf="viewMode() === 'list'">
+    <article class="places__card" *ngFor="let place of filteredPlaces()">
+      <img [src]="place.image" [alt]="place.name" />
+      <div class="places__body">
+        <div class="places__title">
+          <h2>{{ place.name }}</h2>
+          <span class="places__tag" [class.places__tag--open]="place.isOpen">{{ place.isOpen ? 'Aberto' : 'Fechado' }}</span>
+        </div>
+        <p class="places__location">
+          <lucide-icon name="MapPin" size="16"></lucide-icon>
+          {{ place.location }} · {{ place.distance }}
+        </p>
+        <p class="places__description">{{ place.description }}</p>
+        <div class="places__tags">
+          <span *ngFor="let tag of place.tags">{{ tag }}</span>
+        </div>
+        <div class="places__footer">
+          <span class="places__rating">
+            <lucide-icon name="Star" size="18"></lucide-icon>
+            {{ place.rating }} ({{ place.reviewCount }})
+          </span>
+          <a class="places__link" [routerLink]="['/lugares', place.id]">Ver detalhes</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="places__map" *ngIf="viewMode() === 'map'">
+    <lucide-icon name="Map" size="64"></lucide-icon>
+    <p>Mapa interativo em construção. Enquanto isso, explore a lista de lugares.</p>
+  </div>
+</section>

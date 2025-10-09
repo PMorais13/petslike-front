@@ -1,0 +1,19 @@
+<section class="stories" aria-label="Lugares próximos">
+  <header class="stories__header">
+    <div>
+      <h2>Lugares Próximos</h2>
+      <p>Descubra espaços pet friendly na sua região</p>
+    </div>
+    <a class="stories__link" routerLink="/lugares">Ver todos</a>
+  </header>
+
+  <div class="stories__list">
+    <a class="stories__card" *ngFor="let place of places" [routerLink]="['/lugares', place.id]">
+      <img [src]="place.image" [alt]="place.name" />
+      <div class="stories__card-info">
+        <h3>{{ place.name }}</h3>
+        <span>{{ place.distance }}</span>
+      </div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<section class="adoption">
+  <header class="adoption__header">
+    <div>
+      <h1>Adoção e Pets Perdidos</h1>
+      <p>Encontre seu novo melhor amigo ou ajude a reunir famílias</p>
+    </div>
+    <button type="button" class="adoption__cta">
+      <lucide-icon name="Plus" size="18"></lucide-icon>
+      Nova Campanha
+    </button>
+  </header>
+
+  <div class="adoption__grid">
+    <article class="adoption__card" *ngFor="let pet of pets">
+      <div class="adoption__image">
+        <img [src]="pet.image" [alt]="pet.name" />
+        <span class="adoption__badge">Nova adoção</span>
+      </div>
+      <div class="adoption__body">
+        <h2>{{ pet.name }}</h2>
+        <p class="adoption__meta">{{ pet.breed }} · {{ pet.age }} anos · {{ pet.location }}</p>
+        <p class="adoption__description">{{ pet.description }}</p>
+        <ul class="adoption__tags">
+          <li *ngIf="pet.vaccinated"><lucide-icon name="Check" size="16"></lucide-icon> Vacinado</li>
+          <li *ngIf="pet.neutered"><lucide-icon name="Check" size="16"></lucide-icon> Castrado</li>
+          <li *ngIf="pet.goodWithKids"><lucide-icon name="Check" size="16"></lucide-icon> Ama crianças</li>
+        </ul>
+        <div class="adoption__actions">
+          <button type="button" class="adoption__primary">Quero Adotar</button>
+          <button type="button" class="adoption__secondary">Conversar</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>

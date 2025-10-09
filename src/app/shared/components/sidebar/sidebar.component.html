@@ -1,0 +1,58 @@
+<aside class="sidebar">
+  <div class="sidebar__header">
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-icon">🐾</div>
+      <div class="sidebar__logo-text">
+        <span class="sidebar__brand">Petslike</span>
+        <span class="sidebar__tagline">Cuidar é compartilhar</span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="sidebar__nav">
+    <div class="sidebar__section" aria-label="Seções principais">
+      <h2 class="sidebar__section-title">Principal</h2>
+      <ul class="sidebar__list">
+        <li *ngFor="let item of navigationService.mainNavigation; trackBy: trackByRoute">
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="sidebar__link--active"
+            class="sidebar__link"
+            (click)="navigate.emit()"
+          >
+            <lucide-icon [name]="item.icon" size="18"></lucide-icon>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar__section" aria-label="Ajustes e perfil">
+      <h2 class="sidebar__section-title">Conta</h2>
+      <ul class="sidebar__list">
+        <li *ngFor="let item of navigationService.profileNavigation; trackBy: trackByRoute">
+          <a
+            [routerLink]="item.route"
+            routerLinkActive="sidebar__link--active"
+            class="sidebar__link"
+            (click)="navigate.emit()"
+          >
+            <lucide-icon [name]="item.icon" size="18"></lucide-icon>
+            <span>{{ item.label }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="sidebar__profile">
+    <img [src]="user.image" [alt]="user.name" class="sidebar__avatar" />
+    <div class="sidebar__profile-info">
+      <p class="sidebar__profile-name">{{ user.name }}</p>
+      <p class="sidebar__profile-username">{{ user.username }}</p>
+    </div>
+    <button type="button" class="sidebar__profile-action" aria-label="Abrir menu do usuário">
+      <lucide-icon name="ArrowRight" size="18"></lucide-icon>
+    </button>
+  </div>
+</aside>

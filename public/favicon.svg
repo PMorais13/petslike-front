@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="pawGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7F57" />
+      <stop offset="100%" stop-color="#FFB347" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#fff8f3"/>
+  <g fill="url(#pawGradient)">
+    <circle cx="22" cy="22" r="8" />
+    <circle cx="42" cy="22" r="8" />
+    <circle cx="24" cy="40" r="9" />
+    <circle cx="40" cy="40" r="9" />
+    <path d="M32 32c-8 0-14 7-14 15 0 3 2 5 5 5h18c3 0 5-2 5-5 0-8-6-15-14-15z" />
+  </g>
+</svg>

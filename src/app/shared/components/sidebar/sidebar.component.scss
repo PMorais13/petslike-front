@@ -1,0 +1,154 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  height: 100%;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+}
+
+.sidebar__header {
+  margin-bottom: 2rem;
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sidebar__logo-icon {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.sidebar__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.sidebar__brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sidebar__tagline {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar__section + .sidebar__section {
+  margin-top: 1.5rem;
+}
+
+.sidebar__section-title {
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  color: #4b5563;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar__link:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.sidebar__link--active {
+  background: rgba(129, 140, 248, 0.12);
+  color: #4c1d95;
+  font-weight: 600;
+}
+
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.12), rgba(236, 72, 153, 0.1));
+}
+
+.sidebar__avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.sidebar__profile-info {
+  flex: 1;
+}
+
+.sidebar__profile-name {
+  margin: 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sidebar__profile-username {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.sidebar__profile-action {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: none;
+  background: #ede9fe;
+  color: #5b21b6;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sidebar__profile-action:hover {
+  background: #ddd6fe;
+}
+
+@media (max-width: 1023px) {
+  .sidebar {
+    width: 16rem;
+    padding: 1.25rem;
+  }
+}

@@ -1,0 +1,53 @@
+<div class="feed" *ngIf="user() as currentUser">
+  <div class="feed__main">
+    <app-feed-composer [user]="currentUser" [pets]="currentUser.pets ?? []" (postCreated)="handleCreatePost($event)"></app-feed-composer>
+
+    <app-place-stories [places]="places"></app-place-stories>
+
+    <section class="feed__posts" aria-label="Publicações recentes">
+      <app-post-card
+        *ngFor="let post of posts(); trackBy: trackByPostId"
+        [post]="post"
+        (like)="handleLikePost($event)"
+      ></app-post-card>
+    </section>
+  </div>
+
+  <aside class="feed__sidebar">
+    <div class="feed__card">
+      <h2>Agenda da semana</h2>
+      <ul>
+        <li>
+          <span class="feed__bullet feed__bullet--purple"></span>
+          Aula de adestramento com o Pingo · Qua, 10h
+        </li>
+        <li>
+          <span class="feed__bullet feed__bullet--pink"></span>
+          Feira pet friendly no Parque Villa Lobos · Sex, 15h
+        </li>
+        <li>
+          <span class="feed__bullet feed__bullet--green"></span>
+          Campanha de adoção na ONG Patinhas Felizes · Sáb, 10h
+        </li>
+      </ul>
+    </div>
+
+    <div class="feed__card">
+      <h2>Estatísticas da sua comunidade</h2>
+      <div class="feed__stats">
+        <div>
+          <strong>342</strong>
+          <span>Pontos</span>
+        </div>
+        <div>
+          <strong>#156</strong>
+          <span>Ranking</span>
+        </div>
+        <div>
+          <strong>23</strong>
+          <span>Novos contatos</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>

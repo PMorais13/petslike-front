@@ -1,0 +1,25 @@
+<section class="profile" *ngIf="user() as currentUser">
+  <header class="profile__header">
+    <img [src]="currentUser.image" [alt]="currentUser.name" />
+    <div>
+      <h1>{{ currentUser.name }}</h1>
+      <p>{{ currentUser.username }} · {{ currentUser.location }}</p>
+      <p class="profile__bio">{{ currentUser.bio }}</p>
+    </div>
+    <button type="button">
+      <lucide-icon name="Settings" size="18"></lucide-icon>
+      Editar perfil
+    </button>
+  </header>
+
+  <section class="profile__pets" *ngIf="currentUser.pets?.length">
+    <h2>Meus Pets</h2>
+    <div class="profile__pet-grid">
+      <article *ngFor="let pet of currentUser.pets">
+        <img [src]="pet.image" [alt]="pet.name" />
+        <h3>{{ pet.name }}</h3>
+        <p>{{ pet.type | titlecase }} · {{ pet.age }} anos</p>
+      </article>
+    </div>
+  </section>
+</section>
