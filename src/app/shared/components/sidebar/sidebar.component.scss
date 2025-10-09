@@ -64,6 +64,12 @@
   color: #9ca3af;
 }
 
+.sidebar__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .sidebar__list {
   display: flex;
   flex-direction: column;
@@ -85,6 +91,10 @@
   transition: background 0.2s ease, color 0.2s ease;
 }
 
+.sidebar__link--parent {
+  justify-content: space-between;
+}
+
 .sidebar__link:hover {
   background: #f3f4f6;
   color: #111827;
@@ -94,6 +104,55 @@
   background: rgba(129, 140, 248, 0.12);
   color: #4c1d95;
   font-weight: 600;
+}
+
+.sidebar__chevron {
+  color: #9ca3af;
+  transition: transform 0.2s ease;
+}
+
+.sidebar__chevron--open {
+  transform: rotate(180deg);
+}
+
+.sidebar__sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0 0 0 2.25rem;
+  margin: 0;
+}
+
+.sidebar__sublink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.6rem;
+  color: #6b7280;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar__sublink:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.sidebar__sublink--active {
+  color: #4c1d95;
+  font-weight: 600;
+}
+
+.sidebar__bullet {
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.5;
 }
 
 .sidebar__profile {

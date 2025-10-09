@@ -13,16 +13,50 @@
     <div class="sidebar__section" aria-label="Seções principais">
       <h2 class="sidebar__section-title">Principal</h2>
       <ul class="sidebar__list">
-        <li *ngFor="let item of navigationService.mainNavigation; trackBy: trackByRoute">
+        <li *ngFor="let item of navigationService.mainNavigation; trackBy: trackByRoute" class="sidebar__item">
           <a
             [routerLink]="item.route"
+            [queryParams]="item.queryParams ?? null"
             routerLinkActive="sidebar__link--active"
+            [routerLinkActiveOptions]="
+              item.children?.length
+                ? { paths: 'exact', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' }
+                : { paths: 'exact', queryParams: 'subset', matrixParams: 'ignored', fragment: 'ignored' }
+            "
             class="sidebar__link"
-            (click)="navigate.emit()"
+            [class.sidebar__link--parent]="item.children?.length"
+            (click)="onParentClick(item)"
           >
             <lucide-icon [name]="item.icon" size="18"></lucide-icon>
             <span>{{ item.label }}</span>
+            <lucide-icon
+              *ngIf="item.children?.length"
+              name="ChevronDown"
+              size="16"
+              class="sidebar__chevron"
+              [class.sidebar__chevron--open]="isExpanded(item.route)"
+            ></lucide-icon>
           </a>
+
+          <ul
+            *ngIf="item.children?.length && isExpanded(item.route)"
+            class="sidebar__sublist"
+            [attr.aria-label]="'Subseções de ' + item.label"
+          >
+            <li *ngFor="let child of item.children; trackBy: trackByChildRoute">
+              <a
+                [routerLink]="child.route"
+                [queryParams]="child.queryParams ?? null"
+                routerLinkActive="sidebar__sublink--active"
+                [routerLinkActiveOptions]="{ paths: 'exact', queryParams: 'subset', matrixParams: 'ignored', fragment: 'ignored' }"
+                class="sidebar__sublink"
+                (click)="navigate.emit()"
+              >
+                <span class="sidebar__bullet" aria-hidden="true"></span>
+                <span>{{ child.label }}</span>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
