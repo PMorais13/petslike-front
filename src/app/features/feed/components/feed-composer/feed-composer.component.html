@@ -1,0 +1,78 @@
+<section class="composer">
+  <div class="composer__trigger" (click)="openDialog()" role="button" tabindex="0">
+    <img [src]="user.image" [alt]="user.name" class="composer__avatar" />
+    <input type="text" placeholder="Compartilhe algo..." readonly />
+    <button type="button" class="composer__quick-action" aria-label="Criar publicação">
+      <lucide-icon name="Plus" size="18"></lucide-icon>
+    </button>
+  </div>
+
+  <div class="composer__actions">
+    <button type="button" class="composer__action" (click)="openDialog()">
+      <lucide-icon name="ImageIcon" size="18"></lucide-icon>
+      <span>Foto</span>
+    </button>
+    <button type="button" class="composer__action" (click)="openDialog()">
+      <lucide-icon name="Camera" size="18"></lucide-icon>
+      <span>Vídeo</span>
+    </button>
+  </div>
+
+  <div class="composer__dialog" *ngIf="isDialogOpen()">
+    <div class="composer__backdrop" (click)="closeDialog()"></div>
+    <div class="composer__modal" role="dialog" aria-modal="true">
+      <header class="composer__modal-header">
+        <h2>Criar publicação</h2>
+        <button type="button" (click)="closeDialog()" aria-label="Fechar">
+          <lucide-icon name="X" size="18"></lucide-icon>
+        </button>
+      </header>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="composer__form">
+        <div class="composer__user">
+          <img [src]="user.image" [alt]="user.name" class="composer__avatar" />
+          <div>
+            <p class="composer__user-name">{{ user.name }}</p>
+            <p class="composer__user-role">Público</p>
+          </div>
+        </div>
+
+        <label class="composer__label">
+          Postando sobre qual pet?
+          <select formControlName="petId">
+            <option value="">Selecione um pet (opcional)</option>
+            <option *ngFor="let pet of pets" [value]="pet.id">{{ pet.name }}</option>
+          </select>
+        </label>
+
+        <textarea formControlName="text" rows="4" placeholder="O que você está pensando?"></textarea>
+        <div class="composer__error" *ngIf="form.controls['text'].touched && form.controls['text'].invalid">
+          Escreva algo antes de publicar.
+        </div>
+
+        <div class="composer__media" *ngIf="selectedImages().length">
+          <div class="composer__media-item" *ngFor="let image of selectedImages(); index as index">
+            <img [src]="image" alt="Pré-visualização" />
+            <button type="button" (click)="removeImage(index)" aria-label="Remover imagem">
+              <lucide-icon name="X" size="16"></lucide-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="composer__footer">
+          <div class="composer__footer-actions">
+            <label class="composer__upload">
+              <input type="file" multiple accept="image/*" (change)="handleFileInput($event)" hidden />
+              <lucide-icon name="ImageIcon" size="18"></lucide-icon>
+              <span>Adicionar fotos</span>
+            </label>
+          </div>
+
+          <button type="submit" class="composer__submit" [disabled]="form.invalid">
+            Publicar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

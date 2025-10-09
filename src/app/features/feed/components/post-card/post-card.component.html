@@ -1,0 +1,33 @@
+<article class="post">
+  <header class="post__header">
+    <img [src]="post.author.image" [alt]="post.author.name" class="post__avatar" />
+    <div>
+      <div class="post__author">{{ post.author.name }}</div>
+      <div class="post__meta">
+        {{ post.author.username }} · {{ post.timestamp | date: 'dd MMM, HH:mm' }}
+      </div>
+    </div>
+    <span class="post__badge" *ngIf="post.petName">{{ post.petName }}</span>
+  </header>
+
+  <p class="post__text">{{ post.text }}</p>
+
+  <div class="post__media" *ngIf="post.images.length">
+    <img *ngFor="let image of post.images" [src]="image" alt="Imagem do post" />
+  </div>
+
+  <footer class="post__footer">
+    <button type="button" class="post__action" [class.post__action--active]="post.liked" (click)="handleLike()">
+      <lucide-icon name="Heart" size="18"></lucide-icon>
+      <span>{{ post.likes }}</span>
+    </button>
+    <button type="button" class="post__action">
+      <lucide-icon name="MessageCircle" size="18"></lucide-icon>
+      <span>{{ post.comments }}</span>
+    </button>
+    <button type="button" class="post__action">
+      <lucide-icon name="Share2" size="18"></lucide-icon>
+      <span>{{ post.shares }}</span>
+    </button>
+  </footer>
+</article>

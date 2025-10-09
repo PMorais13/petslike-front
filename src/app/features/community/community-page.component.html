@@ -1,0 +1,80 @@
+<section class="community">
+  <header class="community__header">
+    <div>
+      <h1>Comunidade Petslike</h1>
+      <p>Participe de grupos, eventos e discussões para cuidar melhor do seu pet</p>
+    </div>
+    <button type="button" class="community__cta">
+      <lucide-icon name="Plus" size="18"></lucide-icon>
+      Criar Grupo
+    </button>
+  </header>
+
+  <div class="community__layout">
+    <main class="community__main">
+      <section class="community__hero">
+        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80" alt="Encontro da comunidade" />
+        <div class="community__hero-overlay">
+          <h2>Encontro semanal no Parque Villa Lobos</h2>
+          <p>Domingo às 9h · Socialização guiada para cães e troca de experiências entre tutores.</p>
+          <button type="button">Quero Participar</button>
+        </div>
+      </section>
+
+      <section class="community__highlights" aria-label="Destaques da comunidade">
+        <article class="community__card" *ngFor="let post of highlights">
+          <header>
+            <h3>{{ post.text }}</h3>
+            <p>{{ post.author.name }} · {{ post.timestamp | date: 'dd MMMM' }}</p>
+          </header>
+          <footer>
+            <span>
+              <lucide-icon name="Heart" size="16"></lucide-icon>
+              {{ post.likes }} curtidas
+            </span>
+            <span>
+              <lucide-icon name="MessageCircle" size="16"></lucide-icon>
+              {{ post.comments }} comentários
+            </span>
+          </footer>
+        </article>
+      </section>
+    </main>
+
+    <aside class="community__sidebar">
+      <section class="community__stats">
+        <h2>Resumo da Comunidade</h2>
+        <div class="community__stats-grid">
+          <div>
+            <strong>{{ stats.groups }}</strong>
+            <span>Grupos Ativos</span>
+          </div>
+          <div>
+            <strong>{{ stats.discussions }}</strong>
+            <span>Discussões</span>
+          </div>
+          <div>
+            <strong>{{ stats.events }}</strong>
+            <span>Eventos</span>
+          </div>
+          <div>
+            <strong>{{ stats.members | number: '1.0-0' }}</strong>
+            <span>Membros</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="community__members">
+        <h2>Top Membros</h2>
+        <article class="community__member" *ngFor="let member of topMembers">
+          <img [src]="member.image" [alt]="member.name" />
+          <div>
+            <p class="community__member-name">{{ member.name }}</p>
+            <p class="community__member-meta">{{ member.points }} pts · {{ member.ranking }}</p>
+          </div>
+          <button type="button">Seguir</button>
+        </article>
+      </section>
+    </aside>
+  </div>
+</section>

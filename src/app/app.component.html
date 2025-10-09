@@ -1,0 +1,21 @@
+<app-loading-screen *ngIf="isLoading(); else appLayout"></app-loading-screen>
+
+<ng-template #appLayout>
+  <ng-container *ngIf="user() as currentUser">
+    <div class="app-shell" [class.app-shell--sidebar-open]="isSidebarOpen()">
+      <div class="app-shell__sidebar">
+        <app-sidebar [user]="currentUser" (navigate)="closeSidebar()"></app-sidebar>
+      </div>
+
+      <div class="app-shell__content">
+        <app-mobile-header class="app-shell__mobile-header" (menuClick)="openSidebar()"></app-mobile-header>
+
+        <div class="app-shell__inner">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+
+      <div class="app-shell__overlay" *ngIf="isSidebarOpen()" (click)="closeSidebar()"></div>
+    </div>
+  </ng-container>
+</ng-template>

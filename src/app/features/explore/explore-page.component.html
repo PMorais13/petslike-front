@@ -1,0 +1,48 @@
+<section class="explore">
+  <header class="explore__header">
+    <div>
+      <h1>Explorar Petslike</h1>
+      <p>Encontre pets, tutores e serviços para se conectar</p>
+    </div>
+    <div class="explore__search">
+      <lucide-icon name="Search" size="18"></lucide-icon>
+      <input type="search" placeholder="Pesquisar pets, tutores, serviços..." />
+    </div>
+  </header>
+
+  <nav class="explore__tabs">
+    <button
+      type="button"
+      [class.explore__tab--active]="activeTab === 'pets'"
+      (click)="activeTab = 'pets'"
+    >
+      Pets
+      <span class="explore__pill">{{ pets.length }}</span>
+    </button>
+    <button type="button" [class.explore__tab--active]="activeTab === 'services'" (click)="activeTab = 'services'">
+      Serviços
+      <span class="explore__pill">8</span>
+    </button>
+    <button type="button" [class.explore__tab--active]="activeTab === 'tutors'" (click)="activeTab = 'tutors'">
+      Tutores
+      <span class="explore__pill">23</span>
+    </button>
+  </nav>
+
+  <div class="explore__content" *ngIf="activeTab === 'pets'">
+    <article class="explore__card" *ngFor="let pet of pets">
+      <img [src]="pet.image" [alt]="pet.name" />
+      <div class="explore__card-body">
+        <h2>{{ pet.name }}</h2>
+        <p>{{ pet.breed }} · {{ pet.age }} anos</p>
+        <a class="explore__link" [routerLink]="['/perfil-usuario']">Ver perfil</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="explore__placeholder" *ngIf="activeTab !== 'pets'">
+    <lucide-icon name="Compass" size="48"></lucide-icon>
+    <h2>Em breve</h2>
+    <p>Estamos preparando uma experiência completa para descobrir {{ activeTab }} incríveis.</p>
+  </div>
+</section>

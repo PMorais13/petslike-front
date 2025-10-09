@@ -1,0 +1,27 @@
+.loading {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(236, 72, 153, 0.08));
+  color: #4c1d95;
+  text-align: center;
+}
+
+.loading__logo {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  font-size: 2rem;
+  color: #ffffff;
+  box-shadow: 0 20px 60px rgba(79, 70, 229, 0.25);
+}
+
+.loading__text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4c1d95;
+}

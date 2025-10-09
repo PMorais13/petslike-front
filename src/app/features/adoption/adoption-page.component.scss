@@ -1,0 +1,146 @@
+.adoption {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.adoption__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.adoption__header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #111827;
+}
+
+.adoption__header p {
+  margin: 0.4rem 0 0;
+  color: #6b7280;
+}
+
+.adoption__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 18px 35px -24px rgba(129, 140, 248, 0.7);
+}
+
+.adoption__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1.75rem;
+}
+
+.adoption__card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 60px -40px rgba(15, 23, 42, 0.4);
+}
+
+.adoption__image {
+  position: relative;
+}
+
+.adoption__image img {
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+}
+
+.adoption__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(236, 72, 153, 0.15);
+  color: #be123c;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.adoption__body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.adoption__body h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #111827;
+}
+
+.adoption__meta {
+  margin: 0;
+  color: #6b7280;
+}
+
+.adoption__description {
+  margin: 0;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.adoption__tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #4c1d95;
+}
+
+.adoption__tags li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(129, 140, 248, 0.12);
+}
+
+.adoption__actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.adoption__primary,
+.adoption__secondary {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.adoption__primary {
+  border: none;
+  background: linear-gradient(135deg, #10b981, #14b8a6);
+  color: #ffffff;
+}
+
+.adoption__secondary {
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: transparent;
+  color: #4c1d95;
+}

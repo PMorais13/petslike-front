@@ -1,0 +1,47 @@
+<section class="services">
+  <header class="services__header">
+    <div>
+      <h1>Serviços para o seu pet</h1>
+      <p>Profissionais e estabelecimentos recomendados pela comunidade Petslike</p>
+    </div>
+  </header>
+
+  <nav class="services__categories">
+    <button
+      type="button"
+      *ngFor="let category of categories"
+      [class.services__category--active]="selectedCategory() === category.id"
+      (click)="setCategory(category.id)"
+    >
+      <lucide-icon [name]="category.icon" size="18"></lucide-icon>
+      {{ category.label }}
+    </button>
+  </nav>
+
+  <div class="services__grid">
+    <article class="services__card" *ngFor="let provider of providers()">
+      <img [src]="provider.image" [alt]="provider.name" />
+      <div class="services__info">
+        <div class="services__title">
+          <h2>{{ provider.name }}</h2>
+          <span *ngIf="provider.verified" class="services__verified">Verificado</span>
+        </div>
+        <p class="services__meta">
+          <lucide-icon name="MapPin" size="16"></lucide-icon>
+          {{ provider.location }} · {{ provider.distance }}
+        </p>
+        <p class="services__description">{{ provider.description }}</p>
+        <ul class="services__tags">
+          <li *ngFor="let service of provider.services ?? provider.amenities">{{ service }}</li>
+        </ul>
+        <div class="services__footer">
+          <span class="services__rating">
+            <lucide-icon name="Star" size="18"></lucide-icon>
+            {{ provider.rating }} ({{ provider.reviewCount }})
+          </span>
+          <span class="services__price">{{ provider.price || provider.priceRange }}</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
