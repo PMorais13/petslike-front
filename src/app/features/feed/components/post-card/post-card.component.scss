@@ -12,34 +12,44 @@
 .post__header {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 1rem;
 }
 
 .post__avatar {
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 999px;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
-.post__author {
-  font-weight: 600;
-  color: #111827;
+.post__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.post__pet {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1.05rem;
 }
 
 .post__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.85rem;
   color: #6b7280;
 }
 
-.post__badge {
-  margin-left: auto;
-  padding: 0.35rem 0.75rem;
-  background: rgba(236, 72, 153, 0.12);
-  color: #be123c;
-  border-radius: 999px;
+.post__owner {
+  font-weight: 500;
+}
+
+.post__separator {
   font-size: 0.75rem;
-  font-weight: 600;
+  color: rgba(148, 163, 184, 0.7);
 }
 
 .post__text {
@@ -52,12 +62,16 @@
 .post__media {
   display: grid;
   gap: 0.75rem;
+  margin: 0;
 }
 
 .post__media img {
   width: 100%;
+  height: auto;
   border-radius: 1.25rem;
-  object-fit: cover;
+  display: block;
+  object-fit: contain;
+  background: #f8fafc;
 }
 
 .post__footer {
